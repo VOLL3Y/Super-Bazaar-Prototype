@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SUPER BAZAAR (THE GROCERY STORE)</title>
+
+  <!-- Premium Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Hind:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root { --green:#1b8a5a; --yellow:#ffe066; --bg:#f9fff9; }
+    body { margin:0; font-family:'Poppins','Hind',sans-serif; background:var(--bg); color:#222; overflow-x:hidden; }
+
+    /* HERO */
+    .hero { position:relative; min-height:90vh; background:linear-gradient(120deg,#1b8a5a,#2fbf71); color:#fff; display:flex; align-items:center; justify-content:center; text-align:center; }
+    .overlay { position:absolute; inset:0; background:rgba(0,0,0,0.25); }
+    .hero-content { position:relative; max-width:900px; padding:20px; animation:fadeUp 1.2s ease; }
+    .hero h1 { font-size:42px; margin:0; letter-spacing:1px; }
+    .hero h1 span { font-size:22px; display:block; opacity:0.9; }
+    .tagline { font-size:20px; margin:15px 0; }
+    .status { background:var(--yellow); color:#000; display:inline-block; padding:10px 18px; border-radius:30px; font-weight:bold; }
+
+    /* FLOATING ICONS */
+    .float-icon { position:absolute; font-size:40px; opacity:0.15; animation:float 14s infinite ease-in-out; }
+    .i1 { top:20%; left:10%; }
+    .i2 { top:60%; left:15%; animation-duration:18s; }
+    .i3 { top:30%; right:12%; animation-duration:16s; }
+    .i4 { bottom:15%; right:20%; animation-duration:20s; }
+
+    @keyframes float {
+      0% { transform:translateY(0); }
+      50% { transform:translateY(-40px); }
+      100% { transform:translateY(0); }
+    }
+
+    /* BUTTONS */
+    .btns { margin-top:25px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+    .btn {
+      background:#fff;
+      color:var(--green);
+      padding:14px 22px;
+      border-radius:14px;
+      font-weight:600;
+      text-decoration:none;
+      position:relative;
+      overflow:hidden;
+      transition:transform 0.2s ease, box-shadow 0.2s ease;
+      transform:scale(0.95);
+    }
+    .btn:hover { transform:scale(1.08); box-shadow:0 10px 26px rgba(0,0,0,0.25); }
+    .btn:active { transform:scale(0.92) translateY(3px); box-shadow:0 4px 12px rgba(0,0,0,0.2); }
+
+    /* Cursor glow */
+    .btn::after {
+      content:'';
+      position:absolute;
+      inset:-40%;
+      background:radial-gradient(circle at var(--x,50%) var(--y,50%), rgba(27,138,90,0.35), transparent 45%);
+      opacity:0;
+      transition:opacity 0.25s;
+    }
+    .btn:hover::after { opacity:1; }
+
+    /* WhatsApp pulse */
+    .btn.whatsapp { animation:pulse 2.2s infinite; }
+    @keyframes pulse {
+      0% { box-shadow:0 0 0 0 rgba(37,211,102,0.6); }
+      70% { box-shadow:0 0 0 18px rgba(37,211,102,0); }
+      100% { box-shadow:0 0 0 0 rgba(37,211,102,0); }
+    }
+
+    /* SECTIONS */
+    section { padding:80px 16px; max-width:1000px; margin:auto; }
+    h2 { color:var(--green); text-align:center; font-size:32px; margin-bottom:35px; }
+
+    /* ABOUT */
+    .about-decorated { background:linear-gradient(180deg,#ffffff,#f0fff5); }
+    .about-box { background:#fff; padding:40px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.12); font-size:18px; line-height:1.7; transition:0.4s; }
+    .about-box:hover { transform:translateY(-6px); }
+    .highlight { font-size:20px; color:var(--green); font-weight:bold; margin-top:20px; }
+
+    /* REVIEWS */
+    .card { background:#fff; padding:30px; border-radius:18px; box-shadow:0 8px 22px rgba(0,0,0,0.1); }
+    .review { margin-bottom:18px; font-size:17px; }
+
+    iframe { width:100%; height:340px; border:0; border-radius:18px; }
+
+    .contact form { display:grid; gap:14px; max-width:500px; margin:auto; }
+    input, textarea { padding:14px; font-size:16px; border-radius:10px; border:1px solid #ccc; }
+    button { background:var(--green); color:#fff; border:none; padding:14px; border-radius:12px; font-size:17px; cursor:pointer; }
+
+    .lang { position:fixed; top:15px; right:15px; background:#fff; padding:8px 12px; border-radius:20px; font-weight:bold; cursor:pointer; z-index:99; }
+
+    footer { background:var(--green); color:#fff; text-align:center; padding:18px; }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+  </style>
+</head>
+<body>
+
+<div class="lang" onclick="toggleLang()">EN / हिंदी</div>
+
+<header class="hero">
+  <div class="overlay"></div>
+
+  <div class="float-icon i1">🍚</div>
+  <div class="float-icon i2">🌾</div>
+  <div class="float-icon i3">🛢️</div>
+  <div class="float-icon i4">🫘</div>
+
+  <div class="hero-content">
+    <h1 data-en="SUPER BAZAAR" data-hi="सुपर बाज़ार">SUPER BAZAAR<br><span>(THE GROCERY STORE)</span></h1>
+    <p class="tagline" data-en="All groceries available at reasonable prices" data-hi="उचित दामों पर सभी किराना सामान उपलब्ध">All groceries available at reasonable prices</p>
+    <div class="status">🟢 <span data-en="Open Today" data-hi="आज खुला है">Open Today</span>: <span id="hours">9:00 AM – 10:00 PM</span></div>
+    <div class="btns">
+      <a class="btn" href="tel:+918081561675">📞 Call Now</a>
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Asapur+Varanasi" target="_blank">📍 Get Directions</a>
+      <a class="btn whatsapp" href="https://wa.me/918081561675">💬 WhatsApp Order</a>
+    </div>
+  </div>
+</header>
+
+<section class="about-decorated">
+  <h2>About Us</h2>
+  <div class="about-box">
+    <p>🛒 <strong>SUPER BAZAAR</strong> is a trusted local grocery store serving <strong>Asapur and nearby areas</strong> with quality products at reasonable prices. We offer all daily-use grocery items under one roof with friendly service.</p>
+    <p>🌾 From grains and pulses to household essentials, our store is designed to make your daily shopping easy, comfortable, and affordable.</p>
+    <p class="highlight">❤️ Serving the local community with trust, quality, and care.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Reviews & Trust ⭐ 4.3/5</h2>
+  <div class="card">
+    <div class="review">“It's good shop... All groceries available at reasonable price” – Sunil Kumar Singh</div>
+    <div class="review">“Such good kind of people.” – Raj King</div>
+    <div class="review">“Good concession on all purchase items, available all grocery items” – NCERT Maths Helpline</div>
+  </div>
+</section>
+
+<section>
+  <h2>Location & Directions</h2>
+  <p style="text-align:center">Asapur, Varanasi, Uttar Pradesh 221007</p>
+  <iframe loading="lazy" src="https://www.google.com/maps?q=Asapur%20Varanasi&output=embed"></iframe>
+</section>
+
+<section class="contact">
+  <h2>Contact Us</h2>
+  <p style="text-align:center">📞 Phone: <span id="phone">+91 80815 61675</span></p>
+  <div class="btns">
+    <a class="btn whatsapp" href="https://wa.me/918081561675">💬 WhatsApp Chat</a>
+  </div>
+  <form>
+    <input type="text" placeholder="Your Name" />
+    <textarea rows="4" placeholder="Your Message"></textarea>
+    <button type="button">Send Message</button>
+  </form>
+</section>
+
+<section id="admin" style="display:none; background:#fff; margin:80px auto; max-width:900px; padding:40px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.15)">
+  <h2>🔐 Owner Admin Panel</h2>
+  <p style="text-align:center">Only the shop owner can edit these details.</p>
+  <div style="display:grid; gap:14px; max-width:500px; margin:auto">
+    <input type="text" placeholder="Opening Hours" id="adminHours" />
+    <input type="text" placeholder="Contact Number" id="adminPhone" />
+    <textarea rows="3" placeholder="Today's Offer (text only)"></textarea>
+    <button onclick="saveAdmin()">Save Changes</button>
+  </div>
+</section>
+
+<footer>© 2026 SUPER BAZAAR (THE GROCERY STORE)</footer>
+
+<script>
+  // Cursor-follow glow
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      btn.style.setProperty('--x', e.clientX - r.left + 'px');
+      btn.style.setProperty('--y', e.clientY - r.top + 'px');
+    });
+  });
+
+  // Language toggle
+  let lang = 'en';
+  function toggleLang(){
+    lang = lang === 'en' ? 'hi' : 'en';
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.innerText = el.getAttribute('data-' + lang);
+    });
+  }
+  // Admin lock
+  const adminPassword = 'superbazaar';
+  document.addEventListener('keydown', e => {
+    if(e.key === 'A' && e.altKey){
+      const pass = prompt('Enter Owner Password');
+      if(pass === adminPassword){
+        document.getElementById('admin').style.display = 'block';
+        window.scrollTo({top: document.getElementById('admin').offsetTop, behavior:'smooth'});
+      } else {
+        alert('Incorrect password');
+      }
+    }
+  });
+
+  function saveAdmin(){
+    const h = document.getElementById('adminHours').value;
+    const p = document.getElementById('adminPhone').value;
+    if(h) document.getElementById('hours').innerText = h;
+    if(p) document.getElementById('phone').innerText = p;
+    alert('Changes applied (demo mode)');
+  }
+</script>
+
+</body>
+</html>
